@@ -1,0 +1,614 @@
+// Styles
+@import 'normalize.less';
+
+// Variables
+// Colors:
+@black: 		#020202;
+@white: 		#F3F3F3;
+@link_color:	@white;
+@link_hover:	#FEA901;
+@blue: 			#3091BA;
+@deep_blue: 	#137199;
+@pest_color: 	#30BA7B;
+@navy_blue: 	#2C3E50;
+@green: 		#06282f;
+@deep_green: 	#061414;
+@blue_t: 		rgba(048, 145, 186, 0.90);
+@blue_t2: 		rgba(048, 145, 186, 0.70);
+@deep_blue_t: 	rgba(019, 113, 153, 0.50);
+@t_green: 		rgba(008, 030, 029, 0.90);
+@shadow: 		rgba(000, 000, 000, 0.30);
+// Fonts
+@serif: 'Georgia', serif;
+@sans_serif: 'MS-Trebuchet', sans-serif;
+@cursive: 'Cursive';
+
+
+// Mixins 
+.gradient(@from, @to) {
+	background: -webkit-linear-gradient(@from, @to);
+	background:    -moz-linear-gradient(@from, @to);
+	background:     -ms-linear-gradient(@from, @to);
+	background:      -o-linear-gradient(@from, @to);
+	background: 		linear-gradient(@from, @to);
+}
+.changeAutofill(@a: @white, @b: white) {
+	input:-webkit-autofill {
+	    -webkit-text-fill-color: @a;
+	    -webkit-box-shadow: 0 0 0px 1000px @b inset;
+	}
+	input:-moz-autofill {
+	    -moz-text-fill-color: @a;
+	    -moz-box-shadow: 0 0 0px 1000px @b inset;
+	}
+	input:-o-autofill {
+	    -o-text-fill-color: @a;
+	    -o-box-shadow: 0 0 0px 1000px @b inset;
+	}
+	input:-khtml-autofill {
+	    -khtml-text-fill-color: @a;
+	    -khtml-box-shadow: 0 0 0px 1000px @b inset;
+	}
+}
+.text_shadow1 {
+	text-shadow: 0 2px 2px @shadow;
+}
+
+.text_shadow2 {
+	text-shadow: 0 1px 1px @shadow;
+}
+.box_shadow1 {
+	box-shadow: 0px 1px 3px 2px @shadow;
+}
+
+// Default Settings
+@-ms-viewport {
+	width: device-width;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	min-height: 100%;
+	position: relative;
+}
+
+html.lt-ie9 {
+	max-width: 480px;
+	margin: 0 auto;
+	position: relative;
+}
+
+a {
+	text-decoration: none;
+	color: @link_color;
+	&:hover, &:active {
+		color: @link_hover;
+	}
+}
+
+body {
+	background: url("../img/circuite_white.jpg");
+	font: 14px/1.5em @serif;
+	position: relative;
+}
+
+.container {
+	width: 90%;
+	max-width: 1230px;
+	height: 100%;
+	margin: 0 auto;
+}
+h1 { font-size: 32px; }
+h2 { font-size: 30px; }
+h3 { font-size: 14px; font-style: italic; }
+h1, h2, h3 {
+	line-height: 1.5em;
+	padding: 5px 0px;
+}
+// End Default Settings
+
+// Admin Nav
+nav[role=adminnav] {
+	background: url("../img/circuite_black.jpg");
+	ul {
+	    background-color: @blue_t;
+	    .gradient(@blue_t, darken(@blue_t, 10%));
+		list-style: none;
+		text-align: center;
+		li {
+			position: relative;
+            -webkit-transition: background 0.3s ease-in-out;
+            transition: background 0.3s ease-in-out;
+            .rqstcount {
+            	.gradient(@pest_color, darken(@pest_color, 15%));
+            	box-shadow: -1px 1px 2px @shadow;
+            	border-radius: 100%;
+            	position: absolute;
+            	text-align: center;
+            	line-height: 15px;
+            	height: 20px;
+            	width: 20px;
+            	right: 5px;
+            	top: 5px;
+            }
+            div {
+            	-webkit-transition: -webkit-transform 0.3s ease-in-out;
+	            transition: transform 0.3s ease-in-out;
+            }
+			.navlabel {
+				display: block;
+				width: 100%;
+				border-bottom: 2px solid rgba(255, 255, 255, 0);
+	            -webkit-transition: border-bottom 0.3s ease-in-out;
+	            transition: border-bottom 0.3s ease-in-out;
+			}
+			.icon32x32, .game32x32 {
+				margin: 5px auto;
+			}
+            &:hover {
+            	cursor: pointer;
+                background: @blue_t2;
+    			.gradient(darken(@blue_t2, 10%), @blue_t2);
+            }
+            &:hover .navlabel {
+				border-bottom: 2px solid @link_hover;
+            }
+            &:hover div {
+            	-webkit-transform: scale(0.8) rotateY(360deg);
+            } 
+		}
+	}
+}
+// End of Admin Nav
+main {
+	overflow: hidden;
+	min-height: 100%;
+}
+
+// Person Class
+.person {
+	background: @white;
+	margin: 10px;
+	padding: 10px;
+	.box_shadow1;
+	.img {
+		height: 130px;
+		width: 110px;
+		margin: 5px auto;
+		box-shadow: 0 0 2px 3px @shadow;
+	}
+	p {
+		text-align: center;
+		width: 100%;
+		line-height: 1.8em;
+	}
+	p.highlight {
+		background: @blue;
+		.gradient(@blue, @deep_blue);
+		font-weight: bold;
+		color:@white;
+		margin: 5px auto;
+		padding: 5px;
+		border-radius: 5px;
+		.text_shadow2;
+		box-shadow: 0px 0px 0px 1px @shadow,
+			  inset 1px 1px 1px @shadow;
+	}
+	.icons {
+		width: 70px;
+		margin: 0px auto;
+		margin-top: 5px;
+	}
+	.icon32x32, .game32x32 {
+		display: inline-block;
+	}
+	.icons {
+		input[type=submit] { border: none; }
+	}
+}
+// End of Person Class
+
+// Box Class
+.box {
+	background: url("../img/Pattern.jpg");
+	margin: 10px;
+	.box_shadow1;
+	.title {
+		background: @blue;
+		.gradient(@blue, @deep_blue);
+		font-size: 1em;
+		line-height: 1.5em;
+		font-weight: bold;
+		text-align: center;
+		padding: 5px;
+		color: @white;
+		.text_shadow2;
+		.box_shadow1;
+	}
+	p {
+		text-align: center;
+		line-height: 1.8em;
+	}
+	.icons {
+		width: 68px;
+		margin: 0px auto;
+		margin-top: 5px;
+	}
+	.icon32x32 {
+		display: inline-block;
+	}
+}
+// End of Box Class
+
+// Icons
+.icon32x32 {
+	height: 32px;
+	width: 32px;
+	background: url('../img/AdminSprite_32x32.png') no-repeat;
+}
+
+.game32x32 {
+	height: 32px;
+	width: 32px;
+	background: url('../img/GameSprite_32x32.png') no-repeat;
+}
+
+.n1 	{ 	background-position: -000px -000px; 	} // Home
+.n2 	{ 	background-position: -032px -000px; 	} // Member List
+.n3 	{ 	background-position: -064px -000px; 	} // Join Request
+.n4 	{ 	background-position: -096px -000px; 	} // PC Participants
+.n5 	{ 	background-position: -000px -032px; 	} // GC Participants
+.n6 	{ 	background-position: -032px -032px; 	} // Panel Member
+.n7 	{ 	background-position: -064px -032px; 	} // Events
+.n8 	{ 	background-position: -096px -032px; 	} // Add Events
+.n9 	{ 	background-position: -000px -064px; 	} // PC Archive
+.n10 	{ 	background-position: -032px -064px; 	} // GC Archive
+.n11 	{ 	background-position: -064px -064px; 	} // Event View
+.n12 	{ 	background-position: -096px -064px; 	} // Settings
+.n13 	{ 	background-position: -000px -096px; 	} // Left Nav Button
+.n14 	{ 	background-position: -032px -096px; 	} // Right Nav Button
+.n15	{ 	background-position: -064px -096px; 	} // Event Update Button
+.n16	{ 	background-position: -096px -096px; 	} // Event Delete Button
+.n17	{ 	background-position: -000px -128px; 	} // Phone Icon
+.n18	{ 	background-position: -032px -128px; 	} // Mail Icon
+.n19	{ 	background-position: -064px -128px; 	} // Facebook Icon
+.n20	{ 	background-position: -096px -128px; 	} // Tik Mark
+
+.NFSM 	{ 	background-position: -000px -00px; 	} // Need For Speed - Mostwanted
+.FIFA 	{ 	background-position: -032px -00px; 	} // FIFA 14
+.COD4 	{ 	background-position: -064px -00px; 	} // Call of Duty - Modern Warefare
+.CHESS 	{ 	background-position: -000px -32px; 	} // Chess
+.CARROM { 	background-position: -032px -32px; 	} // Carrom
+.TTENNIS{ 	background-position: -064px -32px; 	} // Table Tennis
+.QUIZ	{ 	background-position: -000px -64px; 	} // Table Tennis
+// End of Icons
+
+// Navigation Buttons
+.navbuttons{
+	.np {
+		height: 32px;
+		width: 32px;
+		p {
+			font-weight: bold;
+			font-size: 1.3em;
+			color: @navy_blue;
+			margin-left: 32px;
+			line-height: 32px;
+		}
+	}
+	#p {
+		float: left;
+	}
+	#n {
+		float: right;
+		p {
+			margin-left: -45px;
+		}
+	}
+}
+// End of Navigation Buttons
+
+// Form Container
+#form-container, .form-container {
+	color: @navy_blue;
+	margin: 20px auto;
+	h2, h3 {
+		text-align: center;
+		.text_shadow1;
+	}
+	.box {
+		border-radius: 5px;
+		.box_shadow1;
+		width: 500px;
+		margin: 0px auto;
+		padding: 25px;
+	}
+}
+// End of Form Container
+
+// Form Style
+.form {
+	label {
+		font-size: 1.2em;
+		font-style: italic;
+		font-weight: bold;
+		padding-left: 2px;
+		text-shadow: 0px 2px 1px #FFFFFF;
+	}
+	input[type=tel],
+	input[type=text],
+	input[type=date],
+	input[type=email],
+	input[type=password] {
+		width: 100%;
+		margin: 10px 0px 5px;
+		padding: 5px 10px;
+	}
+	input[type=submit] {
+		background: @navy_blue;
+		.gradient(@navy_blue, darken(@navy_blue, 5%));
+		border: none;
+		border-radius: 5px;
+		margin: 5px auto;
+		padding: 7px 10px;
+		color: @white;
+		width: 100%;
+			outline: none;
+		box-shadow: 0 0 0 1px @shadow,
+					inset 1px 1px 0 1px @shadow;
+		font-size: 1.2em;
+		&:hover, &:active {
+			cursor: pointer;
+			background: @navy_blue;
+			.gradient(darken(@navy_blue, 5%), @navy_blue);
+			box-shadow: none;
+		}
+	}
+	input[type=file] {
+		width: 100%;
+		height: 35px;
+		margin: 10px 0px 5px;
+	}
+	input[type=checkbox]{
+		margin: 5px 10px 10px 20px;
+		padding: 5px 10px;
+	}
+	select {
+		width: 100%;
+		height: 35px;
+		margin: 10px 0px 5px;
+	}
+	textarea {
+		margin: 10px 0px;
+		padding: 5px 10px;
+		width: 100%;
+		height: 150px;
+	}
+	.changeAutofill(none, white);
+}
+// End of Form Style
+
+// Other
+.floatingPanel {
+	background: rgba(1, 1, 1, .7);
+	position: absolute;
+	display: none;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: 0;
+	.archivepanelform {
+		position: fixed;
+		left: 30%;
+		top: 20%;
+	}
+	.warning,
+	.success {
+		font-size: 2em;
+		.text_shadow1;
+		font-weight: bold;
+		position: fixed;
+		top: 45%;
+		left: 40%;
+	}
+}
+// Other
+
+// Miscellinuous
+.bold {
+	font-weight: bold;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.center {
+	text-align: center;
+}
+
+.hidden {
+	display: none;
+}
+
+.warning,
+.wanrc,
+.success {
+	color: darken(RED, 15%);
+	font-size: 14px;
+	font-style: italic;
+	text-shadow: 0px 1px 1px 1px #000;
+	margin-bottom: 5px;
+	padding-left: 3px;
+}
+.warnc {
+	text-align: center;
+}
+.success {
+	color: GREEN;
+}
+.button {
+	background: @navy_blue;
+	.gradient(@navy_blue, darken(@navy_blue, 5%));
+	border-radius: 5px;
+	margin: 5px auto;
+	padding: 7px 10px;
+	color: @white;
+	text-align: center;
+	box-shadow: 0 0 0 1px @shadow,
+				inset 1px 1px 0 1px @shadow;
+	font-size: 1.2em;
+	&:hover, &:active {
+		cursor: pointer;
+		background: @navy_blue;
+		.gradient(darken(@navy_blue, 5%), @navy_blue);
+		box-shadow: none;
+	}
+}
+// End of Miscellinuous
+
+// Fluid Grid
+.row {
+	width: 100%;
+}
+.columns {
+	float: left;
+}
+.columns.one 		{	width: 	08.333%		}
+.columns.two 		{	width: 	16.666%		}
+.columns.three 		{	width: 	25.000%		}
+.columns.four 		{	width: 	33.333%		}
+.columns.five 		{	width: 	41.666%		}
+.columns.six 		{	width: 	50.000%		}
+.columns.seven 		{	width: 	58.333%		}
+.columns.eight 		{	width: 	66.666%		}
+.columns.nine 		{	width: 	75.000%		}
+.columns.ten 		{	width: 	83.333%		}
+.columns.eleven 	{	width: 	91.666%		}
+.columns.twelve 	{	width: 	100.00%		}
+
+.row {
+  *zoom: 1;
+}
+.row:before,
+.row:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.row:after {
+  clear: both;
+}
+// End of Fluid Grid
+
+// Media Queries
+// Very Large Tablets
+@media only screen and (max-width:1024px){
+	nav[role=adminnav] {
+		.columns.two {
+			width: 16.666%;
+		}
+	}
+	.columns.two {
+		width: 	33.333%;
+	}
+}
+// Large Tablets
+@media only screen and (max-width:960px){
+	// Fluid Grid
+	.columns.three,
+	.columns.five {
+		width: 50%;
+	}
+}
+// iPad & Tablets
+@media only screen and (max-width:768px){
+	.columns.six {
+		width: 100%;
+	}
+	.columns.two {
+		width: 	50.000%;
+	}
+}
+// Other Tablets
+@media only screen and (max-width:720px){
+	.columns.four {
+		width: 100%;
+	}
+}
+// Nexus & Kindle Tablets
+@media only screen and (max-width:600px){
+	.floatingPanel {
+		.archivepanelform {
+			left: 0;
+			top: 0;
+		}
+	}
+	#form-container {
+		.box {
+			width: 100%;
+		}
+	}
+	nav[role=adminnav] {
+		.columns.two {
+			width: 33.333%;
+		}
+	}
+}
+// Andoid & iPhone
+@media only screen and (max-width:480px){
+	section {
+		.columns.two {
+		width: 	50.000%;
+		}
+	}
+	// Fluid Grid
+	.columns.one,
+	.columns.two,
+	.columns.three,
+	.columns.four,
+	.columns.five,
+	.columns.six,
+	.columns.seven,
+	.columns.eight,
+	.columns.nine,
+	.columns.ten,
+	.columns.eleven,
+	.columns.twelve{
+		width: 100%;
+	}
+	// Header
+	.container {
+		width: 95%;
+	}
+}
+// Old iPhone & Phones
+@media only screen and (max-width:384px){
+	section {
+		.columns.two {
+			width: 100%;
+		}
+	}
+}
+// End Media Queries
+
+// Sprite for Retina Devices
+@media screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+	.icon32x32 {
+		background: url('../img/AdminSprite_64x64.png');
+		background-size: 128px 160px;
+	}
+	.game32x32 {
+		background: url('../img/GameSprite_64x64.png');
+		background-size: 96px 96px;
+	}
+}
